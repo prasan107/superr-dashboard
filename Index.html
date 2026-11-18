@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reliable Under Pressure | SupeRR Selector V4.2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff7fb;--card:#fff;--ink:#14183a;--mut:#5f6385;--line:#f0d3e3;--pink:#e91e8c;--pink2:#fbd0e6;--navy:#1b2a6b;--ok:#0f8a5f;--mid:#b9770e;--lo:#c0392b;--dot:#e5d6df;--g:#bcc0d6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1230;--card:#171c44;--ink:#f6f0f8;--mut:#a9aed2;--line:#2c3366;--pink:#ff4fa5;--pink2:#4a1f46;--navy:#8fa2ff;--ok:#4fd9a0;--mid:#f0b95a;--lo:#ff8a7a;--dot:#2e3568;--g:#4a5188;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1230;--card:#171c44;--ink:#f6f0f8;--mut:#a9aed2;--line:#2c3366;--pink:#ff4fa5;--pink2:#4a1f46;--navy:#8fa2ff;--ok:#4fd9a0;--mid:#f0b95a;--lo:#ff8a7a;--dot:#2e3568;--g:#4a5188;color-scheme:dark}
+html,body{height:auto}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif}
+.w{max-width:1080px;margin:auto;padding:28px 20px 60px}
+h1{font-size:clamp(30px,5.2vw,54px);line-height:1.02;margin:0 0 10px;font-weight:800;letter-spacing:-.03em;max-width:15ch}
+h2{font-size:20px;margin:22px 0 6px;font-weight:800}
+.lead{color:var(--mut);max-width:64ch;margin:0 0 16px}
+.top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--mut)}.chip b{color:var(--ok)}
+.facts{display:flex;flex-wrap:wrap;gap:6px 26px;margin:0 0 22px;color:var(--mut);font-size:14px}.facts b{color:var(--ink);font-weight:800}
+nav{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--line);margin-bottom:20px}
+nav button{font:inherit;font-weight:600;background:none;border:0;color:var(--mut);padding:10px 16px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px}
+nav button[aria-selected=true]{color:var(--pink);border-color:var(--pink)}
+button:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+section{display:none}section.on{display:block}
+.row{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:8px;overflow:hidden}
+.hd{display:grid;grid-template-columns:34px minmax(130px,1.3fr) minmax(150px,1.2fr) minmax(110px,1fr) 100px;gap:12px;align-items:center;width:100%;padding:12px 16px;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.hd:hover{background:var(--pink2)}
+.rk{font-size:24px;font-weight:800;color:var(--pink)}
+.nm{font-weight:800}.nm small{display:block;font-weight:400;color:var(--mut);font-size:12.5px}
+.dots{display:flex;gap:3px;flex-wrap:wrap;max-width:150px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--dot)}.dots i.f{background:var(--pink)}
+.dl{font-size:12px;color:var(--mut);margin-top:3px}
+.bar{height:8px;background:var(--dot);border-radius:9px;overflow:hidden}.bar u{display:block;height:100%;background:var(--navy);border-radius:9px}
+.tag{font-size:12px;font-weight:700;border-radius:8px;padding:4px 9px;text-align:center;border:1px solid currentColor}
+.t1{color:var(--ok)}.t2{color:var(--navy)}.t3{color:var(--mid)}.t4{color:var(--lo)}
+.dt{display:none;padding:4px 16px 18px 62px;border-top:1px dashed var(--line)}.row.open .dt{display:block}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:10px;margin:14px 0}
+.g div{background:var(--bg);border-radius:10px;padding:9px 12px}.g span{display:block;font-size:12px;color:var(--mut)}.g b{font-size:19px}
+.cmp{display:grid;grid-template-columns:130px 1fr 46px;gap:8px;align-items:center;font-size:13px;margin:7px 0}
+.cmp .bar{height:11px}.cmp .p u{background:var(--pink)}
+.ph{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:6px 0 3px}.ph i{display:block}
+.lg{font-size:12px;color:var(--mut)}.lg b{display:inline-block;width:10px;height:10px;border-radius:3px;margin:0 4px 0 10px;vertical-align:-1px}
+.note{border-left:4px solid var(--pink);background:var(--card);padding:12px 16px;border-radius:0 12px 12px 0;margin:12px 0;color:var(--mut)}.note b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14px}th{color:var(--mut);font-weight:600}
+.sc{overflow-x:auto}
+@media(max-width:720px){.hd{grid-template-columns:30px 1fr 90px}.hd .c3,.hd .c4{display:none}.dt{padding-left:16px}}
+@media(prefers-reduced-motion:no-preference){.bar u{transition:width .5s}}
+</style></head><body><div class="w">
+<div class="top"><div><h1>Reliable under pressure</h1><p class="lead">Players ranked by the win probability they add when the next ball can swing the match most. Open any row for the evidence.</p></div>
+<div class="chip"><b>V4.2 final</b> · actual extras, 16 specifications</div></div>
+<div class="facts"><span><b>812</b> matches</span><span><b>193,608</b> deliveries</span><span>Pressure = top <b>20%</b> of leverage, pooled by innings</span><span>Rank = mean over <b>16</b> specifications</span><span>AUC <b>0.8021</b> · Brier <b>0.1809</b></span></div>
+<nav role="tablist" id="nav"></nav>
+<section id="bat"></section><section id="bowl"></section>
+<section id="val"><h2>Data funnel</h2><div class="sc"><table id="fn"></table></div>
+<h2>What each check showed</h2><div class="sc"><table id="ck"></table></div>
+<div class="note"><b>Honest limits.</b> Places 9–10 among batters and 7–10 among bowlers cannot be separated with confidence. Virat Kohli is in the list through mean rank only (0 of 16 top-10 appearances). 3 of 393 run margins and 0.3% of chases still do not reconcile, and no out-of-period test was run.</div></section>
+<section id="chg"><h2>V4.1 to V4.2: who moved</h2><p class="lead">Updated data holds the actual extra runs, so the +1 assumption was replaced. Top-10 overlap with V4.1: 6 of 10 batters and 6 of 10 bowlers.</p><div class="sc"><table id="mv"></table></div>
+<h2>Does the pressure definition matter?</h2><p class="lead">Ranking leverage within each match innings instead of pooled: 9 of 10 batters and 7 of 10 bowlers stay. Batters: Sooryavanshi, Jaiswal and Abhishek Sharma rise and Kohli drops out. Bowlers: Ferguson, Ellis and Adil Rashid enter, and Motie, Hasaranga and Mohsin leave. Pooled was kept because the per-match version labels low-stakes balls in one-sided games as pressure.</p></section>
+<section id="fit"><h2>Ranking B: where each pick helps Rajasthan Royals</h2>
+<p class="lead">Availability for the 16 December auction is unknown until retention lists are public. Priority 1 fits a media-reported RR need with a top-10 place in all 16 specifications. It ignores purse and overseas slots.</p><div class="sc"><table id="ft"></table></div></section>
+</div>
+<script>
+// name,team,press,matches,SR,avg,dot,SRnormal,delta,wpa,cons,top10,pp,mid,death,priority,note
+const BAT=[["Tim David","RCB",294,57,182,36,32,175,1,.49,.67,16,5,39,56,"1","Death-overs finisher, positive in 67% of pressure matches"],["Heinrich Klaasen","SRH",256,49,186,79,20,163,15,.35,.69,16,8,66,26,"1","Middle-overs hitter with the lowest dot-ball share"],["Shreyas Iyer","PBKS",349,63,159,40,32,153,6,.33,.77,16,34,45,21,"2","Spread across all phases, high consistency"],["Nicholas Pooran","LSG",317,69,173,39,38,155,17,.28,.53,16,36,43,21,"2","Delta +17, but positive in only 53% of pressure matches"],["Mohammad Nabi","No IPL 2025/26 rows",148,27,145,27,36,126,9,.23,.92,12,18,45,36,"2","Thin sample; availability and registration need checking"],["Phil Salt","RCB",383,64,167,46,37,172,1,.32,.59,12,80,18,3,"2","Powerplay opener"],["Vaibhav Sooryavanshi","RR",159,30,198,52,42,229,-13,.38,.90,12,88,10,2,"Benchmark","At RR; strong impact though his ordinary-ball strike rate is higher"],["Yashasvi Jaiswal","RR",374,72,174,30,41,150,23,.24,.58,12,81,17,2,"Benchmark","At RR; largest delta in the list"],["Daryl Mitchell","No IPL 2025/26 rows",199,39,164,36,24,144,13,.24,.55,11,25,53,22,"3","Medium confidence; availability needs checking"],["Virat Kohli","RCB",505,73,152,40,33,144,11,.22,.59,0,64,28,8,"3","Low confidence: 0 of 16, placed by mean rank only"]];
+// name,team,type,press,matches,econ,ballsPerWkt,dot,econNormal,delta,wpa,cons,top10,pp,mid,death,priority,note
+const BOWL=[["Varun Chakravarthy","KKR","Right-arm leg-break",382,73,7.08,13,42,8.17,14,.30,.75,16,20,61,19,"2","Middle-overs control, largest sample"],["Rashid Khan","GT","Right-arm leg-break",371,82,7.29,14,37,7.42,2,.32,.64,16,7,66,27,"2","Economy close to his ordinary level; impact comes from wickets and swing"],["Josh Hazlewood","RCB","Right-arm fast-medium",323,50,7.73,11,50,8.42,7,.32,.64,16,61,11,28,"1","New-ball pressure bowler, 50% dots"],["Kuldeep Yadav","DC","Left-arm wrist-spin",309,68,6.95,13,39,8.17,15,.25,.72,16,0,74,26,"2","Middle-overs control, economy 1.2 better under pressure"],["Ravindra Jadeja","RR","Slow left-arm orthodox",196,49,7.71,49,30,7.93,1,.23,.80,14,4,93,3,"Benchmark","At RR; a wicket only every 49 balls"],["Sunil Narine","KKR","Right-arm offbreak",253,50,7.47,36,40,6.74,-8,.32,.65,12,19,67,15,"2","Pressure economy is worse than ordinary; rating rests on adjusted impact"],["Anshul Kamboj","CSK","Right-arm medium-fast",131,25,7.01,12,47,10.91,21,.15,.92,11,79,6,15,"3","Smallest sample, ordinary economy 10.91"],["Gudakesh Motie","No IPL 2025/26 rows","Slow left-arm orthodox",124,29,7.11,16,41,8.30,7,.22,.86,7,7,81,12,"3","Medium confidence; availability needs checking"],["Wanindu Hasaranga","No IPL 2026 rows (2025: RR)","Right-arm leg-break",266,54,7.67,14,36,7.79,2,.25,.62,7,7,70,22,"3","Medium confidence; availability needs checking"],["Mohsin Khan","LSG","Left-arm medium-fast",170,29,9.21,24,45,8.26,-9,.25,.67,7,61,21,18,"3","Pressure economy 9.21, worse than ordinary"]];
+const tg=n=>n>=12?["High","t1"]:n>=4?["Medium","t3"]:["Low","t4"];
+const dots=n=>'<div class="dots">'+Array.from({length:16},(_,i)=>`<i class="${i<n?'f':''}"></i>`).join("")+'</div><div class="dl">Top 10 in '+n+' of 16</div>';
+const sg=x=>(x>0?"+":"")+x;
+function ladder(el,rows,isBat){
+ el.innerHTML='<p class="lead">'+(isBat?'Batters':'Bowlers')+' in final order by mean rank over 16 specifications. Each dot is one specification where the player stayed in the top 10.</p>'+rows.map((r,i)=>{
+  const o=isBat?{n:r[0],t:r[1],ty:"",w:r[9],c:r[10],k:r[11],pp:r[12],mi:r[13],de:r[14],note:r[16]}:{n:r[0],t:r[1],ty:r[2]+". ",w:r[10],c:r[11],k:r[12],pp:r[13],mi:r[14],de:r[15],note:r[17]};const g=tg(o.k);
+  const st=isBat?[["Pressure balls",r[2]],["Matches",r[3]],["Pressure SR",r[4]],["Average",r[5]],["Dot %",r[6]+"%"],["Delta vs own",sg(r[8])]]:[["Pressure balls",r[3]],["Matches",r[4]],["Pressure economy",r[5].toFixed(2)],["Balls per wicket",r[6]],["Dot %",r[7]+"%"],["Delta vs own",sg(r[9])]];
+  const cm=isBat?[["Pressure SR",r[4],240,1],["Ordinary SR",r[7],240,0]]:[["Pressure economy",r[5],11,1],["Ordinary economy",r[8],11,0]];
+  return `<div class="row"><button class="hd" aria-expanded="false"><span class="rk">${i+1}</span><span class="nm">${o.n}<small>${o.t}</small></span><span class="c3">${dots(o.k)}</span><span class="c4"><div class="bar"><u style="width:${o.w/.95*100}%"></u></div><div class="dl">Win prob added per 100 pressure balls: ${o.w.toFixed(2)}</div></span><span class="tag ${g[1]}">${g[0]} (${o.k}/16)</span></button>
+  <div class="dt"><p style="margin:12px 0 0;color:var(--mut)">${o.ty}${o.note}.</p><div class="g">${st.map(s=>`<div><span>${s[0]}</span><b>${s[1]}</b></div>`).join("")}<div><span>Consistency</span><b>${Math.round(o.c*100)}%</b></div></div>
+  ${cm.map(c=>`<div class="cmp ${c[3]?'p':''}"><span>${c[0]}</span><div class="bar"><u style="width:${c[1]/c[2]*100}%"></u></div><b>${c[1]}</b></div>`).join("")}
+  <div class="lg">Where the pressure balls come<b style="background:var(--navy)"></b>Powerplay ${o.pp}%<b style="background:var(--pink)"></b>Middle ${o.mi}%<b style="background:var(--g)"></b>Death ${o.de}%</div><div class="ph"><i style="width:${o.pp}%;background:var(--navy)"></i><i style="width:${o.mi}%;background:var(--pink)"></i><i style="width:${o.de}%;background:var(--g)"></i></div></div></div>`}).join("")+(isBat?'<div class="note"><b>Reading the list.</b> The first four batters are in the top 10 under all 16 specifications. Places 9 and 10 are low confidence, and Kohli is placed by mean rank only.</div>':'<div class="note"><b>Reading the list.</b> The first four bowlers are in the top 10 under all 16 specifications. Places 7 to 10 are medium confidence.</div>');
+ el.querySelectorAll(".hd").forEach(b=>b.onclick=()=>{const r=b.parentNode;const o=r.classList.toggle("open");b.setAttribute("aria-expanded",o)});
+}
+ladder(bat,BAT,1);ladder(bowl,BOWL,0);
+const T=(id,h,rows)=>document.getElementById(id).innerHTML="<tr>"+h.map(x=>"<th>"+x+"</th>").join("")+"</tr>"+rows.map(r=>"<tr>"+r.map(x=>"<td>"+x+"</td>").join("")+"</tr>").join("");
+T("fn",["Step","Matches","Deliveries"],[["Raw data pack","883","200,999"],["Drop innings 3–4; 16 matches have no ball data","867","200,961"],["Drop DLS or revised-target games","833","196,528"],["Drop games without a winner","818","195,124"],["Drop 6 regulation-tied games decided in a Super Over","812","193,608"]]);
+T("ck",["Check","Result"],[["Actual extras in updated file","Rebuilt totals reproduce 99.2% of 393 run margins exactly (old +1 assumption: 30.5%) and reach the target in 99.7% of chases won by wickets (73.4%)."],["Super Over labels","Six tied matches carried the Super Over winner as label; removing them raised AUC from 0.7967 to 0.8003. This was the largest single correction."],["“Other” deliveries","Treated as illegal deliveries, like no-balls: 97.8% of their overs then have exactly 6 other legal balls, against 0.9% if legal."],["No-ball outcome in leverage","Adding it changes nothing material: top-10 overlap 10 of 10 for batters and bowlers."],["Old extras assumptions refitted","Overlap with the exact-extras top 10 is only 4–6 of 10 batters and 5–6 of 10 bowlers, so the V4.1 order was replaced."]]);
+T("mv",["","Entries","Exits"],[["Batters","Nicholas Pooran, Mohammad Nabi, Daryl Mitchell, Virat Kohli","Glenn Maxwell, Rahul Tewatia, Glenn Phillips, Rinku Singh"],["Bowlers","Kuldeep Yadav, Ravindra Jadeja, Anshul Kamboj, Wanindu Hasaranga","Nathan Ellis, Lockie Ferguson, Krunal Pandya, Axar Patel"]]);
+const pr=(a,b)=>[...a.map(r=>[r[0]+" (bat)",r[1],a===BAT?r[16]:"",r[a===BAT?11:12]+"/16",r[15]||r[16]]),...b.map(r=>r)];
+const rows=[...BAT.map(r=>[r[0]+" (bat)",r[1],r[16],r[11]+"/16",r[15]]),...BOWL.map(r=>[r[0]+" (bowl)",r[1],r[17],r[12]+"/16",r[16]])];
+T("ft",["Player","IPL 2026 team in data","Pressure role","Top 10","Priority"],rows);
+const tabs=[["bat","Batters"],["bowl","Bowlers"],["val","Validation"],["chg","What changed"],["fit","RR fit"]],nav=document.getElementById("nav");
+function show(id){tabs.forEach(t=>document.getElementById(t[0]).classList.toggle("on",t[0]==id));nav.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t==id));try{history.replaceState(null,"","#"+id)}catch(e){}}
+tabs.forEach(t=>{const b=document.createElement("button");b.textContent=t[1];b.dataset.t=t[0];b.setAttribute("role","tab");b.onclick=()=>show(t[0]);nav.appendChild(b)});
+show(tabs.some(t=>"#"+t[0]==location.hash)?location.hash.slice(1):"bat");
+</script></body></html>
